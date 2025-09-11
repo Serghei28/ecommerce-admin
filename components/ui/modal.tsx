@@ -26,19 +26,20 @@ export const Modal: React.FC<ModalProps> = ({
             onClose();
         }
     };
-    return(
-        <Dialog>
-            <DialogContent>
-                <DialogHeader>
-                    <DialogTitle>{title}</DialogTitle>
-                    <DialogDescription>
-                        {description}
-                    </DialogDescription>
-                </DialogHeader>
-                <div>
-                    {children}
-                </div>
-            </DialogContent>
-        </Dialog>
-    )
+    return (
+  <Dialog open={isOpen} onOpenChange={onChange}>
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>{title}</DialogTitle>
+        <DialogDescription>
+          {description}
+        </DialogDescription>
+      </DialogHeader>
+      <div>
+        {children}
+      </div>
+    </DialogContent>
+  </Dialog>
+)
+
 }
