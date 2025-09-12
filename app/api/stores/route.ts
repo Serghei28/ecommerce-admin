@@ -12,6 +12,8 @@ export async function POST(
 
         const { name } = body;
         if (!userId){
+                  console.log("❌ Нет userId в auth()");
+
             return new NextResponse("Unauthorized", {status: 401});
         }
 

@@ -18,6 +18,7 @@ import { Form,
          } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
     name: z.string().min(1)
@@ -25,6 +26,7 @@ const formSchema = z.object({
 
 export const StoreModal = () => {
     const storeModal = useStoreModal();
+    const router = useRouter();
 
     const [loading, setLoading] = useState(false);
 
@@ -41,8 +43,9 @@ export const StoreModal = () => {
 
            const response = await axios.post('/api/stores', values);
 
-            window.location.assign(`/${response.data.id}`);
-        }catch (error) {
+storeModal.onClose();
+      router.push(`/${response.data.id}`);
+      router.refresh();        }catch (error) {
             toast.error("Something went wrong.")
         }finally{
             setLoading(false);
